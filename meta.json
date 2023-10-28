@@ -1,5 +1,5 @@
 {
-  "name": "Arno Packages",
+  "name": "Arno Packages Shared",
   "description": "Arno related projects basic re-usable packages and modules",
   "template": "https://vercel.com/templates/next.js/turborepo-next-basic",
   "featured": true,

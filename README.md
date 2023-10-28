@@ -1,6 +1,7 @@
 # Arno Packages
 
 - public packages for Arno's projects and experiments
+- packages shall publish to npm with `@arno/*` scope
 
 ## Env Setup
 
@@ -29,3 +30,8 @@
 ## Github Actions & CI
 
 > WIP
+
+## Future plans
+
+- [ ] add `unit` test CI for all packages
+- [ ] add publish CI for all packages when commit and merge to `main` branch
