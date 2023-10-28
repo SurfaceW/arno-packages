@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "types": "./index.ts",
   "dependencies": {
+    "eventemitter3": "^5.0.1",
     "reflect-metadata": "^0.1.13",
     "tsconfig": "workspace:*"
   },

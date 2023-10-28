@@ -12,6 +12,8 @@
     "moduleResolution": "node",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
