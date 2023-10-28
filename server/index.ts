@@ -9,3 +9,5 @@ export type {
   ServiceResultOptions,
   IServiceAdapter,
 } from './service/service.result';
+
+export { getLogger } from './log/logger';

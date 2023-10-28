@@ -18,6 +18,8 @@ const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
   type T = ReturnType<typeof f>
   const loggedSet: typeof set = (...args) => {
     set(...args)
+    // production should avoid console.log
+    if (process.env.NODE_ENV === 'production') return;
     console.groupCollapsed(`[Store][${name}] updated with args`, args);
     console.log(`store update to:`, get());
     console.trace('updated function trace');

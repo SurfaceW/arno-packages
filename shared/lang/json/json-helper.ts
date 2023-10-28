@@ -1,11 +1,11 @@
-export const parseJSONObjectSafe = (str: string | any) => {
+export const parseJSONObjectSafe = <T = any>(str: string | any): T => {
   if (typeof str !== 'string') return str;
   try {
     return JSON.parse(str);
   } catch (e) {
     // log the full string
     console.warn('parseJSONObjectSafe error: %o', e, '\n and the source of str is:', str);
-    return str;
+    return str as T;
   }
 };
 

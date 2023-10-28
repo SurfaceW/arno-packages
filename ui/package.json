@@ -10,7 +10,10 @@
     "generate:component": "turbo gen react-component"
   },
   "dependencies": {
-    "@ant-design/cssinjs": "^1.17.2"
+    "@ant-design/cssinjs": "^1.17.2",
+    "@arno/shared": "workspace:*",
+    "@arno/server": "workspace:*",
+    "@arno/client": "workspace:*"
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.12",
@@ -23,6 +26,7 @@
     "typescript": "5.2.2"
   },
   "peerDependencies": {
+    "next": "13.5.6",
     "dayjs": "1.11.7",
     "lodash": "4.17.2",
     "@types/lodash": "4.14.191",
