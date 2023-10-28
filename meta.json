@@ -1,6 +1,6 @@
 {
   "name": "Arno Packages Shared",
-  "description": "Arno related projects basic re-usable packages and modules",
+  "description": "Arno related projects basic re-usable packages and modules use mono-repo architecture.",
   "template": "https://vercel.com/templates/next.js/turborepo-next-basic",
   "featured": true,
   "boost": true
