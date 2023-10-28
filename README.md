@@ -17,6 +17,7 @@
   - `shared`: client and server basic shared packages
   - `client`: client packages
   - `server`: server packages
+  - `ui`: ui packages(react-based components for share)
 
 ## Dev Guide
 
