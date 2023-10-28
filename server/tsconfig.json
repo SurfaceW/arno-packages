@@ -1,0 +1,11 @@
+{
+  "extends": "tsconfig/base.json",
+  "include": ["./lib", "./index.ts", "types.d.ts"],
+  "exclude": ["dist", "build", "node_modules"],
+  "lib": ["dom", "dom.iterable", "esnext"],
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "downlevelIteration": true
+  }
+}
