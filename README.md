@@ -3,6 +3,11 @@
 - public packages for Arno's projects and experiments
 - packages shall publish to npm with `@arno/*` scope
 
+## Usage
+
+- add to project: `bash ./scripts/sync-from-arno-packages.sh --dir=../ai-elaboration-studio`
+- update from project: `bash ./scripts/sync-to-arno-packages.sh --dir=../ai-elaboration-studio`
+
 ## Env Setup
 
 - `node.js` >= 18.0.0
