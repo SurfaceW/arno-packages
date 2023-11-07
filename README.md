@@ -1,12 +1,12 @@
-# Arno Packages
+# Arno Packages 2
 
 - public packages for Arno's projects and experiments
 - packages shall publish to npm with `@arno/*` scope
 
 ## Usage
 
-- add to project: `bash ./scripts/sync-from-arno-packages.sh --dir=../ai-elaboration-studio`
-- update from project: `bash ./scripts/sync-to-arno-packages.sh --dir=../ai-elaboration-studio`
+- add to project: `pnpm run sync:to`
+- update from project: `pnpm sync:from`
 
 ## Env Setup
 
@@ -25,6 +25,8 @@
   - `ui`: ui packages(react-based components for share)
 
 ## Dev Guide
+
+use turbo repo to manage monorepo architecture.
 
 - `pnpm install`: install dependencies
 - `pnpm run build`: build all packages

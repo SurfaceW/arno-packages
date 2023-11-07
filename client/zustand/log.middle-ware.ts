@@ -1,6 +1,6 @@
 import { StateCreator, StoreMutatorIdentifier } from 'zustand';
 
-type Logger = <
+type ZustandLogger = <
   T extends unknown = unknown,
   Mps extends [StoreMutatorIdentifier, unknown][] = [],
   Mcs extends [StoreMutatorIdentifier, unknown][] = []
@@ -28,9 +28,11 @@ const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
   return f(loggedSet, get, store)
 }
 
+export type { ZustandLogger };
+
 /**
  * A logger middleware for zustand.
  * 
  * - support grouped / labeled and call trace of store update
  */
-export const zustandLogger = loggerImpl as unknown as Logger;
+export const zustandLogger = loggerImpl as unknown as ZustandLogger;
