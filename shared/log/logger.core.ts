@@ -7,6 +7,7 @@ export type LogEntries = Record<string, Log4j>;
 const logLevelData: LogEntries = {
   '*': 'info',
   app: 'error',
+  api: 'error',
   // wait for override by biz service
 };
 
@@ -16,6 +17,7 @@ const logLevelData: LogEntries = {
 const logLevelDevData: Partial<typeof logLevelData> = {
   '*': 'info',
   app: 'debug',
+  api: 'debug',
   // wait for override by biz service
 };
 

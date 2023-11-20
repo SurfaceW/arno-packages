@@ -20,7 +20,7 @@ const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
     set(...args)
     // production should avoid console.log
     if (process.env.NODE_ENV === 'production') return;
-    console.groupCollapsed(`[Store][${name}] updated with args`, args);
+    console.groupCollapsed(`[Store][${new Date().toLocaleTimeString()}][${name}] changed with:`, args);
     console.log(`store update to:`, get());
     console.trace('updated function trace');
     console.groupEnd()

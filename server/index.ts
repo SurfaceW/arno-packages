@@ -5,6 +5,7 @@ export {
   NextHTTPServiceResult,
   NextHTTPServiceResultAdapter,
 } from './service/service.result';
+
 export type {
   ServiceResultOptions,
   IServiceAdapter,
@@ -12,4 +13,5 @@ export type {
 
 export { getLogger } from './log/logger';
 
-export * from './next/server-params';
+export * from './next/compose-api-route';
+export * from './next/compose-server-page';
