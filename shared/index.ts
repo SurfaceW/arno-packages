@@ -24,3 +24,5 @@ export { initRequired, afterInit, ServiceBase, AsyncServiceBase } from './servic
 export type { IAsyncInitialize, IDisposable } from './service/base-service';
 
 export { isBrowserContext } from './runtime/runtime';
+
+export { fetchEnhanced } from './fetch/fetch';

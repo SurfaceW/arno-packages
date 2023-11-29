@@ -5,8 +5,8 @@
 
 ## Usage
 
-- add to project: `pnpm run sync:to`
-- update from project: `pnpm sync:from`
+- update this project from target project: `sh ./scripts/sync-to-arno-packages.sh <dir 2 project>`
+- sync this project to target project: `sh ./scripts/sync-from-arno-packages.sh <dir 2 project>`
 
 ## Env Setup
 
