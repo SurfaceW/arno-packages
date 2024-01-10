@@ -5,8 +5,8 @@
 
 ## Usage
 
-- update this project from target project: `sh ./scripts/sync-to-arno-packages.sh <dir 2 project>`
-- sync this project to target project: `sh ./scripts/sync-from-arno-packages.sh <dir 2 project>`
+- update this project from target project: `sh ./scripts/sync-to-arno-packages.sh --dir='../ai-elaboration-studio'`
+- sync this project to target project: `sh ./scripts/sync-from-arno-packages.sh --dir='../ai-elaboration-studio'`
 
 ## Env Setup
 
