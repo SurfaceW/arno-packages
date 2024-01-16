@@ -29,12 +29,14 @@ export function composeServerPage(
 ) {
   const errorSection = options?.unCatchErrorSection || <div>Something went wrong</div>;
   const context = new Map();
-  return function MiddlewareChainedPageServer({ params, searchParams }: NextServerPageParams) {
+  // @ts-ignore
+  return async function MiddlewareChainedPageServer({ params, searchParams }: NextServerPageParams) {
     const result: any[] = [];
     const _internalFn = async () => {
-      for (const fn of fns) {
+      for await (const fn of fns) {
         try {
           const fnResult = await fn({ params, searchParams }, context);
+          console.log(`compose invoke fn [${fn.name}] with result`, fnResult);
           if (fnResult) {
             /**
              * if middleware returns a value, it means it wants to stop the chain
@@ -51,11 +53,13 @@ export function composeServerPage(
         }
       }
     };
-    return _internalFn().then(() => {
-      if (result.length > 0) {
-        return result[0] as React.ReactNode;
-      }
-      return Page({ params, searchParams, context });
-    });
+    console.log('composeServerPage invoke inside MiddlewareChainedPageServer');
+    await _internalFn();
+    console.log('composeServerPage invoke result with length', result?.length);
+    if (result.length > 0) {
+      console.log('compose invoke result', (result[0] as React.ReactNode)?.toString());
+      return await result[0] as React.ReactNode;
+    }
+    return await Page({ params, searchParams, context });
   };
 }
