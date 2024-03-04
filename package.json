@@ -1,0 +1,19 @@
+{
+  "name": "arno-packages",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": { },
+  "devDependencies": {
+    "cz-conventional-changelog": "latest",
+    "cz-emoji": "latest",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-emoji",
+      "disableScopeLowerCase": true
+    }
+  },
+  "packageManager": "pnpm@8.6.10"
+}

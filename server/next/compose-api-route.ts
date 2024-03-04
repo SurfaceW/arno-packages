@@ -7,9 +7,10 @@ export type ComposeFnCtx = {
 };
 
 export const IRequestContext = Symbol.for('context');
-export interface IRequestContext<NextParams = any> {
+export interface IRequestContext<NextParams = any, Body = any> {
   params: Record<keyof NextParams, string>;
   searchParams: URLSearchParams;
+  parsedBody: Body | null;
 }
 
 export type ComposeAPIRouteFunction = (req: NextRequest, res: NextResponse, reqContext: ComposeFnCtx) => Promise<any>;
@@ -26,10 +27,16 @@ export function composeAPIRoute(...args: ComposeAPIRouteFunction[]) {
   return async function wrapAPIHandler(req: NextRequest, reqContext: any) {
     const context = new Map();
     let finalRes = null;
+    let parsedBody = null;
+    try { 
+      parsedBody = await req.json();
+    } catch(e) {}
+
     // inject basic request searchParams
     context.set(IRequestContext, {
       searchParams: new URLSearchParams(req?.nextUrl?.search),
-      ...reqContext
+      ...reqContext,
+      parsedBody,
     });
     try {
       for (const fn of fns) {
