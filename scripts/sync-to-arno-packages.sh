@@ -31,7 +31,7 @@ echo "🚀 now remove local git repo related packages"
 # Iterate over all files and directories in the current directory
 for file in "$work_dir"/*; do
     # Check if the file is not the .git folder
-    if [[ "$file" != "$work_dir/.git" && "$file" != "$work_dir/scripts" ]]; then
+    if [[ "$file" != "$work_dir/.git" && "$file" != "$work_dir/scripts" && "$file" != "$work_dir/package.json" && "$file" != "$work_dir/pnpm-lock.yaml" ]]; then
         # Remove the file or directory
         rm -rf "$file"
         echo "rm: $file"

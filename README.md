@@ -1,4 +1,4 @@
-# Arno Packages 2
+# Arno Packages
 
 - public packages for Arno's projects and experiments
 - packages shall publish to npm with `@arno/*` scope
@@ -41,5 +41,5 @@ use turbo repo to manage monorepo architecture.
 
 ## Future plans
 
-- [ ] add `unit` test CI for all packages
-- [ ] add publish CI for all packages when commit and merge to `main` branch
+- [x] add `unit` test CI for all packages
+- [x] add publish CI for all packages when commit and merge to `main` branch
