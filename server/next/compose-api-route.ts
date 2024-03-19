@@ -26,11 +26,15 @@ export function composeAPIRoute(...args: ComposeAPIRouteFunction[]) {
   const fns = Array.from(arguments);
   return async function wrapAPIHandler(req: NextRequest, reqContext: any) {
     const context = new Map();
+    
     let finalRes = null;
     let parsedBody = null;
-    try { 
-      parsedBody = await req.json();
-    } catch(e) {}
+
+    if (req.method !== 'GET') {
+      try {
+        parsedBody = await req.json();
+      } catch (e) { }
+    }
 
     // inject basic request searchParams
     context.set(IRequestContext, {
@@ -38,6 +42,7 @@ export function composeAPIRoute(...args: ComposeAPIRouteFunction[]) {
       ...reqContext,
       parsedBody,
     });
+
     try {
       for (const fn of fns) {
         try {
@@ -63,8 +68,12 @@ export function composeAPIRoute(...args: ComposeAPIRouteFunction[]) {
   }
 }
 
+/**
+ * @deprecated use IRequestContext instead
+ */
 export const IRequestBody = Symbol.for('responseBody');
 /**
+ * @deprecated use IRequestContext instead
  * 用于 next server 的 composeAPI route
  * @notice 用于 /app/api/route.ts 中的 route compose
  * 需要配合 parseReq 使用
@@ -73,6 +82,9 @@ export interface IRequestBody<ReqBody = any> {
   body: ReqBody;
 }
 
+/**
+ * @deprecated use composeAPIRoute instead
+ */
 export const parseReq = (options?: {}) => {
   return async function parseReq(req: NextRequest, finalRes: NextResponse, context: any) {
     if (req.method === 'GET') {

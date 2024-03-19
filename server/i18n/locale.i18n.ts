@@ -11,7 +11,7 @@ export function getLocale(request: {
   let locales = AVAILABLE_LOCALES;
   let defaultLocale = DEFAULT_LOCALE;
 
-  console.info('languages', languages, 'headers', request.headers);
+  // console.info('languages', languages, 'headers', request.headers);
 
   if (languages?.[0] === '*') {
     languages = ['en-US'];
