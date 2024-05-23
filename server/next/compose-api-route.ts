@@ -7,7 +7,7 @@ export type ComposeFnCtx = {
 };
 
 export const IRequestContext = Symbol.for('context');
-export interface IRequestContext<NextParams = any, Body = any> {
+export interface IRequestContext<NextParams = any, Body = any, SearchParams = any> {
   params: Record<keyof NextParams, string>;
   searchParams: URLSearchParams;
   parsedBody: Body | null;
@@ -32,8 +32,14 @@ export function composeAPIRoute(...args: ComposeAPIRouteFunction[]) {
 
     if (req.method !== 'GET') {
       try {
-        parsedBody = await req.json();
-      } catch (e) { }
+        parsedBody = await req?.json();
+      } catch (e: any) { 
+        console.error(`
+          [apiRoute] parse body error: ${e?.message || e}
+          ${e?.stack || ''}
+        `);
+        getLogger('api').error('[apiRoute] parse body error: ' + e?.message || e, e?.stack || '');
+      }
     }
 
     // inject basic request searchParams

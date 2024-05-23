@@ -6,6 +6,15 @@ export type SingletonType<T extends new (...args: any[]) => any> = T & {
 
 /**
  * singleton pattern impl. as decorator
+ * 
+ * @example
+ * 
+ * ```ts
+ *  @singleton
+ *  class NodeHelper {
+ *     // ...
+ *  }
+ * ```
  */
 export const singleton = <T extends new (...args: any[]) => any>(classTarget: T) =>
   new Proxy(classTarget, {

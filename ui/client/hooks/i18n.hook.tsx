@@ -3,19 +3,22 @@ import { SupportedLanguage } from "@arno/shared/i18n/language.type";
 
 export const useI18nLang = () => {
 
-  const langFromUrl = useMemo(() => {
+  const langFromCookie = useMemo(() => {
     const url = new URL(window.location.href);
-    /**
-     * url example for https://elaboration.studio/en-US/*
-     */
-    const lang = url.pathname.split('/')?.[1];
-    return lang as SupportedLanguage;
+    // read from cookies value `e-studio-locale`
+    try {
+      const lang = document.cookie.split(';').find((cookie) => cookie.includes('e-studio-locale'))?.split('=')[1];
+      return lang as SupportedLanguage;
+    } catch(e) {
+      return 'en';
+    }
   }, []);
 
-  const [lang, setLang] = useState<SupportedLanguage>(langFromUrl || 'en-US');
+  const [lang, setLang] = useState<SupportedLanguage>(langFromCookie || 'en');
 
   return {
     lang,
     setLang,
   }
 };
+

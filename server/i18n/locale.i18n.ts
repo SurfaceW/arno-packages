@@ -1,8 +1,8 @@
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 
-export const AVAILABLE_LOCALES = ['en-US', 'zh-CN'];
-export const DEFAULT_LOCALE = 'en-US';
+export const AVAILABLE_LOCALES = ['en', 'zh'];
+export const DEFAULT_LOCALE = 'en';
 
 export function getLocale(request: {
   headers: Record<string, string | string[] | undefined>;
@@ -14,8 +14,8 @@ export function getLocale(request: {
   // console.info('languages', languages, 'headers', request.headers);
 
   if (languages?.[0] === '*') {
-    languages = ['en-US'];
+    languages = ['en'];
   }
 
-  return match(languages, locales, defaultLocale); // -> 'en-US'
+  return match(languages, locales, defaultLocale); // -> 'en'
 }

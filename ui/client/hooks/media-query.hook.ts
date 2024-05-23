@@ -21,3 +21,22 @@ export const useDarkModeQuery = (initDark?: boolean) => {
 
   return isDarkMode;
 };
+
+
+export const useMobileQuery = (width?: number) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(`(max-width: ${width || 768}px)`);
+    setIsMobile(mediaQuery.matches);
+
+    function handleResize() {
+      setIsMobile(mediaQuery.matches);
+    }
+
+    mediaQuery.addListener(handleResize);
+    return () => mediaQuery.removeListener(handleResize);
+  }, []);
+
+  return isMobile;
+}
