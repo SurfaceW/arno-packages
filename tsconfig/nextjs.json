@@ -18,14 +18,15 @@
       "dom.iterable",
       "esnext"
     ],
-    "module": "esnext",
+    "module": "ESNext",
     "noEmit": true,
     "resolveJsonModule": true,
     "strict": false,
-    "target": "ES2020"
+    "target": "ES2022"
   },
   "include": [
     "src",
+    "app",
     "next-env.d.ts"
   ],
   "exclude": [

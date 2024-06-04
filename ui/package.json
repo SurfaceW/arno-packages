@@ -23,7 +23,7 @@
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
     "tsconfig": "workspace:*",
-    "typescript": "5.2.2"
+    "typescript": "^5.2.2"
   },
   "peerDependencies": {
     "next": "14.2.0",
@@ -32,7 +32,7 @@
     "@types/lodash": "4.14.191",
     "react": "18.3.1",
     "react-dom": "^18.2.0",
-    "typescript": "5.2.2",
+    "typescript": "^5.2.2",
     "antd": "^5.10.2"
   }
 }

@@ -9,7 +9,10 @@
     "forceConsistentCasingInFileNames": true,
     "inlineSources": false,
     "isolatedModules": true,
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleDetection": "force",
+    "moduleResolution": "NodeNext",
+    "lib": ["es2022", "DOM", "DOM.Iterable"],
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "emitDecoratorMetadata": true,
@@ -17,9 +20,8 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
+    "target": "ES2022",
     "strictNullChecks": true
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
