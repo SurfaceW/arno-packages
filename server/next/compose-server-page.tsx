@@ -16,12 +16,14 @@ export type ComposeServerPageFunction = (
   reqContext: ComposeFnCtx
 ) => Promise<any>;
 
+export type ComposePageParamsType = NextServerPageParams & {
+  context: ComposeFnCtx;
+  lang?: SupportedLanguage;
+};
+
 export function composeServerPage(
   Page: (
-    params: NextServerPageParams & {
-      context: ComposeFnCtx;
-      lang?: SupportedLanguage;
-    }
+    params: ComposePageParamsType
   ) => Promise<React.ReactNode>,
   fns: ComposeServerPageFunction[] = [],
   options?: {
@@ -61,11 +63,11 @@ export function composeServerPage(
         }
       }
     };
-    console.log('composeServerPage invoke inside MiddlewareChainedPageServer');
+    // console.log('composeServerPage invoke inside MiddlewareChainedPageServer');
     await _internalFn();
-    console.log('composeServerPage invoke result with length', result?.length);
+    // console.log('composeServerPage invoke result with length', result?.length);
     if (result.length > 0) {
-      console.log('compose invoke result', (result[0] as React.ReactNode)?.toString());
+      // console.log('compose invoke result', (result[0] as React.ReactNode)?.toString());
       return (await result[0]) as React.ReactNode;
     }
     return await Page({ params, searchParams, context });

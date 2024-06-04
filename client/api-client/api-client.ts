@@ -12,7 +12,8 @@ function processResponse(res: {
 }
 
 async function processErrorContent(res: Response) {
-  return `Response Error:[${res.status}][${res.statusText}]:${await res.text()}`
+  console.error(`fetch error: Response Error:[${res.status}][${res.statusText}]:`, res);
+  return `${await res.text()}`;
 }
 
 /**
