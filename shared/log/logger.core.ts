@@ -5,7 +5,7 @@ export type LogEntries = Record<string, Log4j>;
  * production environment log level with ns config
  */
 const logLevelData: LogEntries = {
-  '*': 'info',
+  '*': 'warn',
   app: 'error',
   api: 'error',
   // wait for override by biz service

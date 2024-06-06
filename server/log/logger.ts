@@ -14,7 +14,7 @@ import pretty, { PrettyOptions } from 'pino-pretty';
  * ```
  */
 export function getLogger<LogNSlevelConfig extends LogEntries = any>(
-  name: keyof LogNSlevelConfig,
+  name?: keyof LogNSlevelConfig,
   options?: {
     pinoConfigs?: LoggerOptions;
     pinoPrettyConfigs?: PrettyOptions;
@@ -24,7 +24,7 @@ export function getLogger<LogNSlevelConfig extends LogEntries = any>(
   const prettyStream = pretty({
     colorize: true,
     translateTime: true,
-    include: 'level,time',
+    include: 'level,pid,time',
     destination: 1,
     sync: true, // by default we write asynchronously
     append: true, // the file is opened with the 'a' flag
