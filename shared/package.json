@@ -5,11 +5,11 @@
   "types": "./index.ts",
   "dependencies": {
     "eventemitter3": "5.0.1",
-    "reflect-metadata": "0.1.13",
-    "tsconfig": "workspace:*"
+    "reflect-metadata": "0.1.13"
   },
   "devDependencies": {
     "@types/node": "18.18.7",
+    "tsconfig": "workspace:*",
     "eslint-config-custom": "workspace:*"
   },
   "peerDependencies": {
