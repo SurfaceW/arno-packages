@@ -47,7 +47,7 @@ export type AIAgentRuntimeType = {
      * So 0.1 means only the tokens comprising the top 10% probability mass are considered.
      * We generally recommend altering this or temperature but not both.
      */
-    topP?: string;
+    topP?: number;
     /**
      * pecifies the format that the model must output. Compatible with GPT-4o, GPT-4 Turbo, and all GPT-3.5 Turbo models since gpt-3.5-turbo-1106.
      * Setting to { "type": "json_object" } enables JSON mode, which guarantees the message the model generates is valid JSON.
