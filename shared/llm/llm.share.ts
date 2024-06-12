@@ -56,7 +56,7 @@ export type LLMPromptInvocationOptions = {
      */
     userId: string;
     /**
-     * the token consumer model to count the token usage
+     * the token consumer model to count the token usage and its price
      */
     model: any;
     /**
