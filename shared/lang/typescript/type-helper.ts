@@ -37,3 +37,10 @@ export type DeepReadonly<T> = {
 export type NonFunctionProperties<T> = Pick<T, {
   [K in keyof T]: T[K] extends Function ? never : K
 }[keyof T]>;
+
+/**
+ * Remove undefined from union type
+ * type A = string | undefined; 
+ * type C = Fn<A>; // C will be string
+ */
+export type RemoveUndefinedType<T> = T extends undefined ? never : T;
