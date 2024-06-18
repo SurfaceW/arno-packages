@@ -6,7 +6,7 @@ import type { CoreTool, LanguageModel } from 'ai';
  * - AI SDK:  https://sdk.vercel.ai/docs/introduction
  * - LangChain: https://api.python.langchain.com/en/latest/langchain_api_reference.html#module-langchain.agents
  */
-export type AIAgentRuntimeType = {
+export type AIAgentRuntimeType<AgentState = any> = {
   /**
    * cuid for the agent
    */
@@ -137,6 +137,7 @@ export type AIAgentRuntimeType = {
   };
   /**
    * @reserve for x-state integration
+   * its state snapshot
    */
-  state?: any;
+  state?: AgentState;
 };
