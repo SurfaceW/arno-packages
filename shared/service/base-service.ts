@@ -1,4 +1,4 @@
-import { EventEmitter } from '../lang/patterns/event-emitter';
+import EventEmitter from 'eventemitter3';
 
 // function to generate unique id with prefix as option
 const uniqueId = (function () {

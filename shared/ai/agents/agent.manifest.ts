@@ -57,6 +57,17 @@ export type AIAgentRuntimeType<AgentState = any> = {
       type: 'text' | 'json_object';
     };
     /**
+     * Tools are additional models that can be used to provide more specific functionality.
+     * this is the uid of the tool
+     */
+    tools?: string[];
+    /**
+     * The configuration for the tools.
+     */
+    toolConfig?: {
+      [toolID: string]: Record<string, any>;
+    }
+    /**
      * use web-search model or not
      */
     webSearch?: boolean;
@@ -107,10 +118,6 @@ export type AIAgentRuntimeType<AgentState = any> = {
       parseAudio?: boolean;
     };
   };
-  /**
-   * Tools that the assistant uses.
-   */
-  tools?: CoreTool[];
   /**
    * Set of 16 key-value pairs that can be attached to an object.
    * This can be useful for storing additional information about the object in a structured format.
