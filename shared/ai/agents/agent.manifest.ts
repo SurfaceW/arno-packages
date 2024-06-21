@@ -1,4 +1,5 @@
 import type { CoreTool, LanguageModel } from 'ai';
+import { ComponentType, SupportedValueType } from '../../form/dynamic-form/dynamic-form.base.type';
 
 /**
  * API spec is learnt from:
@@ -119,16 +120,17 @@ export type AIAgentRuntimeType<AgentState = any> = {
     /**
      * Agent input description
      */
-    input: string | Zod.ZodTypeAny;
+    input?: AgentManifestParameterType[];
     /**
      * Agent output description
      */
-    output: string | Zod.ZodTypeAny;
+    output?: AgentManifestParameterType[];
     /**
      * Enable structured output or not
      * - if enabled, the output will be in JSON format and described by `output` field
      */
     structuredOutput?: boolean;
+    structuredInput?: boolean;
   } & {
     /**
      * emoji icon for the agent
@@ -140,4 +142,11 @@ export type AIAgentRuntimeType<AgentState = any> = {
    * its state snapshot
    */
   state?: AgentState;
+};
+
+export type AgentManifestParameterType = {
+  name: string;
+  desc: string;
+  required: boolean;
+  type: SupportedValueType;
 };

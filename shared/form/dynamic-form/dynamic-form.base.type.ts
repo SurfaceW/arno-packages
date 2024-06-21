@@ -7,6 +7,7 @@ export type ComponentType =
   | 'File'
   | string;
 
+export type SupportedValueType = 'string' | 'number' | 'boolean' | 'json';
 
 /**
  * Dynamic form configuration item
@@ -27,7 +28,7 @@ export interface DynamicFormConfigItem<T = Record<string, any>> {
    * @description
    * string, number, boolean, json -> Object
    */
-  valueType?: 'string' | 'number' | 'boolean' | 'json';
+  valueType?: SupportedValueType;
   /**
    * Setter for the component
    */
