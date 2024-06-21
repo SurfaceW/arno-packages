@@ -48,6 +48,13 @@ export type LLMPromptInvocationOptions = {
    */
   useTokenConsumer?: boolean;
   /**
+   * need to use the tools invoke in llm
+   */
+  useTools?: boolean;
+  tools?: Array<{
+    uid: string;
+  }>;
+  /**
    * the token consumer options
    */
   tokenConsumerOptions?: {
