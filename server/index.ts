@@ -14,5 +14,6 @@ export type {
 export { getLogger } from './log/logger';
 
 export * from './next/compose-api-route';
+export * from './next/compose-server-actions';
 export * from './next/compose-server-page';
 export * from './next/server-params';

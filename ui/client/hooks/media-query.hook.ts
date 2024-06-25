@@ -23,20 +23,25 @@ export const useDarkModeQuery = (initDark?: boolean) => {
 };
 
 
-export const useMobileQuery = (width?: number) => {
-  const [isMobile, setIsMobile] = useState(false);
+export const useMediaMaxWidthQuery = (width?: number) => {
+  const [matched, setIsMatched] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(`(max-width: ${width || 768}px)`);
-    setIsMobile(mediaQuery.matches);
+    setIsMatched(mediaQuery.matches);
 
     function handleResize() {
-      setIsMobile(mediaQuery.matches);
+      setIsMatched(mediaQuery.matches);
     }
 
     mediaQuery.addListener(handleResize);
     return () => mediaQuery.removeListener(handleResize);
   }, []);
 
-  return isMobile;
+  return matched;
 }
+
+/**
+ * check if the current media query matches mobile
+ */
+export const useMobileQuery = () => useMediaMaxWidthQuery(768);

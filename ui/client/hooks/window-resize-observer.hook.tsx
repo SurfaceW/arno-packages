@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import { useMobileQuery } from "./media-query.hook";
+import { useMediaMaxWidthQuery } from "./media-query.hook";
 
 export const useMobileInputAndTextareaFocus = () => {
-  const isMobile = useMobileQuery();
+  const isMobile = useMediaMaxWidthQuery();
   useEffect(() => {
     if (!isMobile) {
       return;
