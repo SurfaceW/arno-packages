@@ -4,26 +4,24 @@ import { ServiceResult } from './service.result';
  * Service Decorator to define the service method is a service function
  * * which mean it will handle error catching and response with a standard format `ServiceResult`
  */
-export function WithServiceResult(customOptions?: {
-  catchFn?: (error: any) => ServiceResult;
+export function WithServiceResult<T>(customOptions?: {
+  catchFn?: (error: any) => ServiceResult<Error, unknown>;
 }) {
-  return function (
+  return function(
     target: any,
     propertyKey: string,
-    descriptor?: TypedPropertyDescriptor<
-      (...args: any[]) => Promise<any>
+    descriptor: TypedPropertyDescriptor<
+      (...args: any[]) => T 
     >
-  ) {
+  ): void {
     const originalMethod = descriptor?.value;
-
     if (!originalMethod) {
       throw new Error('WithServiceResult decorator can only be used on method');
     }
-
-    descriptor.value = async function (...args: any[]): Promise<ServiceResult<unknown, unknown>> {
+    descriptor.value = async function (this: any, ...args: any[]): Promise<ServiceResult<T, unknown>> {
       try {
-        const result = await originalMethod.apply(this, args);
-        return new ServiceResult(true, 'ok', result) as ServiceResult<unknown, unknown> as any;
+        const result = await originalMethod.apply(this, args) as T;
+        return new ServiceResult(true, 'ok', result) as ServiceResult<T, unknown>;
       } catch (error: unknown) {
         if (customOptions?.catchFn) {
           return customOptions.catchFn(error) as never;
@@ -38,6 +36,7 @@ export function WithServiceResult(customOptions?: {
           error
         ) as never;
       }
-    };
+    } as any;
   };
 }
+
