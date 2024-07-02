@@ -6,7 +6,7 @@ import { SupportedLanguage } from '@arno/shared/i18n/language.type';
 import { CookieHelper } from '../cookies/cookies.helper';
 
 export type NextServerPageParams = {
-  params: { [slug: string]: string };
+  params: Record<string, string>;
   searchParams: { [key: string]: string | string[] | undefined };
   lang?: SupportedLanguage;
 };
@@ -21,10 +21,10 @@ export type ComposePageParamsType = NextServerPageParams & {
   lang?: SupportedLanguage;
 };
 
+export type ComposePageFunction = (pageParams: ComposePageParamsType) => Promise<React.ReactNode>;
+
 export function composeServerPage(
-  Page: (
-    params: ComposePageParamsType
-  ) => Promise<React.ReactNode>,
+  Page: ComposePageFunction,
   fns: ComposeServerPageFunction[] = [],
   options?: {
     /**

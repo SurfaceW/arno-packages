@@ -1,10 +1,10 @@
 import { ComposeFnCtx } from "./compose-api-route";
 
-export type ComposeServerActionFunction<T, R extends ServerActionResult<R> = any> = (data: T, ctx: ComposeFnCtx) => Promise<R>;
+export type ComposeServerActionFunction<T, R = any> = (data: T, ctx: ComposeFnCtx) => Promise<ServerActionResult<R>>;
 
 export type ServerActionResult<R = any> = {
   success: boolean;
-  status: string;
+  status?: string;
   message?: string;
   data?: R;
 };
@@ -13,9 +13,9 @@ export type ServerActionResult<R = any> = {
  * Compose server actions for next.js
  * use middleware liked way to handle next action with pre-defined operation functions
  */
-export function composeServerActions(fns: ComposeServerActionFunction<any>[]) {
+export function composeServerActions<InputData extends Record<string, any> = any, ResultData = any>(fns: ComposeServerActionFunction<InputData, ResultData>[]) {
   const ctx = new Map();
-  return async function wrapAPIHandler(data: any) {
+  return async function wrapAPIHandler(data: InputData) {
     let finalRes = null;
     for (const fn of fns) {
       try {
@@ -24,7 +24,7 @@ export function composeServerActions(fns: ComposeServerActionFunction<any>[]) {
           continue;
         }
         if (!response.success) {
-          return response;
+          return response as ServerActionResult as never;
         }
         finalRes = response;
       } catch (e: any) {
@@ -33,9 +33,9 @@ export function composeServerActions(fns: ComposeServerActionFunction<any>[]) {
           success: false,
           status: 'error',
           message: e?.message || e?.toString(),
-        } as ServerActionResult;
+        } as ServerActionResult as never;
       }
     }
-    return finalRes;
+    return finalRes as ServerActionResult<ResultData>;
   }
 }
