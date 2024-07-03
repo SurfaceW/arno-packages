@@ -1,6 +1,6 @@
 import { ComposeFnCtx } from "./compose-api-route";
 
-export type ComposeServerActionFunction<T, R = any> = (data: T, ctx: ComposeFnCtx) => Promise<ServerActionResult<R>>;
+export type ComposeServerActionFunction<T, R = any> = (data: T, ctx: ComposeFnCtx) => Promise<ServerActionResult<R> | void>;
 
 export type ServerActionResult<R = any> = {
   success: boolean;
