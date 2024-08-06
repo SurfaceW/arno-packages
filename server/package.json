@@ -7,8 +7,8 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@types/negotiator": "^0.6.3",
     "negotiator": "^0.6.3",
-    "pino": "^9.0.0",
-    "pino-pretty": "^11.1.0",
+    "pino": "9.3.2",
+    "pino-pretty": "11.2.2",
     "tsconfig": "workspace:*"
   },
   "devDependencies": {

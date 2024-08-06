@@ -6,7 +6,7 @@
   "dependencies": {
     "@arno/shared": "workspace:*",
     "tsconfig": "workspace:*",
-    "pino": "8.16.1"
+    "pino": "9.3.2"
   },
   "devDependencies": {
     "@types/node": "18.18.7",
