@@ -18,3 +18,14 @@ export const trimEmptyLines = (str: string, options?: {
   }
   return trimmed;
 }
+
+export const removeFirstEmojiFromString = (str: string): string => {
+  const emojiRegex = /(\p{Emoji_Presentation}|\p{Emoji}\uFE0F|\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?)/u;
+  return str.trim().replace(emojiRegex, '').trim();
+};
+
+export const getFirstEmojiFromString = (str: string): string | undefined => {
+  const emojiRegex = /(\p{Emoji_Presentation}|\p{Emoji}\uFE0F|\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?)/u;
+  const match = str.trim().match(emojiRegex);
+  return match ? match[0] : undefined;
+}
