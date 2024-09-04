@@ -109,6 +109,10 @@ export type AIAgentRuntimeType<AgentState = any> = {
       syntaxRegex?: string;
     };
     /**
+     * Docs as reference for the instructions
+     */
+    elaborationDocs?: string[];
+    /**
      * The markdown parser options for the instructions.
      */
     markdown?: {
