@@ -30,9 +30,13 @@ export class BroadcastChannelManager {
     } = any,
   >(channelName: string, callback: (message: T) => void) {
     const channel = this.getChannel(channelName);
-    channel.onmessage = (event) => {
+    const fn = (event: MessageEvent<T>) => {
       callback(event.data);
     };
+    channel.addEventListener('message', fn);
+    return () => {
+      channel.removeEventListener('message', fn);
+    }
   }
 
   dispose(channelName?: string) {
