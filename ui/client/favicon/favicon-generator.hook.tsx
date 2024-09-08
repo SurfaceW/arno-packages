@@ -4,8 +4,8 @@ export const useEmojiFavicon = (emoji: string) => {
   useEffect(() => {
     // use a canvas to draw emoji
     const canvas = document.createElement('canvas');
-    canvas.width = 64;
-    canvas.height = 64;
+    canvas.width = 128;
+    canvas.height = 128;
     const context = canvas.getContext('2d');
 
     if (!context) {
@@ -14,7 +14,7 @@ export const useEmojiFavicon = (emoji: string) => {
     }
 
     // adjust the font size and alignment
-    context.font = '64px serif';
+    context.font = '100px serif';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
 
