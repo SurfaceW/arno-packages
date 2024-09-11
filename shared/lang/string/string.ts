@@ -35,6 +35,7 @@ export const getFirstEmojiFromString = (str: string): string | undefined => {
 };
 
 export const isURL = (str: string): boolean => {
-  const urlRegex = /^(http|https):\/\/[^ "]+$/;
+  // Improved URL regex to handle a wider variety of URL formats, but you can adjust according to your needs
+  const urlRegex = /^(https?:\/\/[^\s$.?#].[^\s]*)$/;
   return urlRegex.test(str);
-}
+};
