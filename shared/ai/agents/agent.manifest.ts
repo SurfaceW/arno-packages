@@ -66,7 +66,7 @@ export type AIAgentRuntimeType<AgentState = any> = {
      */
     toolConfig?: {
       [toolID: string]: Record<string, any>;
-    }
+    };
     /**
      * use web-search model or not
      */
@@ -123,9 +123,7 @@ export type AIAgentRuntimeType<AgentState = any> = {
     };
   };
   /**
-   * Set of 16 key-value pairs that can be attached to an object.
    * This can be useful for storing additional information about the object in a structured format.
-   * Keys can be a maximum of 64 characters long and values can be a maxium of 512 characters long.
    */
   metadata?: {
     /**
@@ -142,6 +140,21 @@ export type AIAgentRuntimeType<AgentState = any> = {
      */
     structuredOutput?: boolean;
     structuredInput?: boolean;
+    /**
+     * related agents to this agent
+     */
+    agentContext?: {
+      /**
+       * The related agents to this agent as tools to use.
+       */
+      agentAsTools?: Array<{
+        cuid: string;
+        /**
+         * The name of the tool.
+         */
+        name: string;
+      }>;
+    };
   } & {
     /**
      * emoji icon for the agent
