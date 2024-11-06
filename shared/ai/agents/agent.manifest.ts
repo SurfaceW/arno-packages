@@ -126,6 +126,7 @@ export type AIAgentRuntimeType<AgentState = any> = {
    * This can be useful for storing additional information about the object in a structured format.
    */
   metadata?: {
+    icon?: string;
     /**
      * Agent input description
      */
