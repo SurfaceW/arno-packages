@@ -5,6 +5,12 @@ export type FirstParamOfFunc<FunctionType> = FunctionType extends (
   ? P
   : never;
 
+export type GetFirstParmTypeFromFn<Fn> = Fn extends (first: infer First, ...rest: any[]) => any ? First : never;
+
+export type GetReturnTypeFromFn<Fn> = Fn extends (...args: any[]) => infer Return ? Return : never;
+
+export type GetInternalReturnPromiseType<Fn> = Fn extends (...args: any[]) => Promise<infer Return> ? Return : never;
+
 export type ParametersAsTuple<Func> = Func extends (...args: infer P) => any ? P : never;
 
 
