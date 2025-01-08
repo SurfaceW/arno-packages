@@ -21,7 +21,7 @@ export type ComposePageParamsType = NextServerPageParams & {
   lang?: SupportedLanguage;
 };
 
-export type ComposePageFunction = (pageParams: ComposePageParamsType) => Promise<React.ReactNode>;
+export type ComposePageFunction = (pageParams: ComposePageParamsType) => Promise<React.ReactNode> | React.ReactNode;
 
 export function composeServerPage(
   Page: ComposePageFunction,
