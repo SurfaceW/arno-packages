@@ -1,12 +1,11 @@
 # Arno Packages
 
-- public packages for Arno's projects and experiments
+- public packages for Arno's projects and experiments also for best-practices sharing
 - packages shall publish to npm with `@arno/*` scope
 
 ## Usage
 
-- update this project from target project: `sh ./scripts/sync-to-arno-packages.sh --dir='../ai-elaboration-studio'`
-- sync this project to target project: `sh ./scripts/sync-from-arno-packages.sh --dir='../ai-elaboration-studio'`
+use git sub-module to manage this project in the parent project.
 
 ## Env Setup
 
@@ -19,10 +18,13 @@
 ## Directory Structure
 
 - `packages/`: packages
+  - `scripts`: scripts for shared packages development
   - `shared`: client and server basic shared packages
   - `client`: client packages
   - `server`: server packages
   - `ui`: ui packages(react-based components for share)
+  - `tsconfig`: tsconfig for shared packages
+  - `eslint-config-custom`: eslint config for shared packages
 
 ## Dev Guide
 
@@ -33,7 +35,6 @@ use turbo repo to manage monorepo architecture.
 - `pnpm run lint`: lint all packages
 - `pnpm run test`: test all packages
 - `pnpm run publish`: publish all packages
-
 
 ## Github Actions & CI
 
