@@ -4,17 +4,17 @@
   "version": "0.0.1",
   "types": "./index.ts",
   "dependencies": {
-    "@formatjs/intl-localematcher": "^0.5.4",
+    "@formatjs/intl-localematcher": "^0.5.10",
     "@types/negotiator": "^0.6.3",
-    "negotiator": "^0.6.3",
+    "negotiator": "^0.6.4",
     "pino": "9.3.2",
     "pino-pretty": "11.2.2",
     "tsconfig": "workspace:*"
   },
   "devDependencies": {
     "@arno/shared": "workspace:*",
-    "@types/node": "20",
-    "@types/react": "^19.0.0",
+    "@types/node": "^20.17.24",
+    "@types/react": "^19.0.12",
     "eslint-config-custom": "workspace:*"
   },
   "peerDependencies": {

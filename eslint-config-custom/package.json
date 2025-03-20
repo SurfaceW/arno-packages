@@ -9,15 +9,15 @@
     "react-internal.js"
   ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
     "@vercel/style-guide": "^5.2.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-turbo": "^1.12.4",
+    "eslint-config-turbo": "^1.13.4",
     "eslint-plugin-only-warn": "^1.1.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.8.2"
   },
   "dependencies": {
-    "eslint": "^8.56.0"
+    "eslint": "^8.57.1"
   }
 }
