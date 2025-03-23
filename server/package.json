@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@arno/shared": "workspace:*",
-    "@types/node": "^20.17.24",
+    "@types/node": "^20.17.25",
     "@types/react": "^19.0.12",
     "eslint-config-custom": "workspace:*"
   },
