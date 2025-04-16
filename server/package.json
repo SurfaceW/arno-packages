@@ -13,8 +13,8 @@
   },
   "devDependencies": {
     "@arno/shared": "workspace:*",
-    "@types/node": "^20.17.25",
-    "@types/react": "^19.0.12",
+    "@types/node": "^20.17.30",
+    "@types/react": "^19.1.2",
     "eslint-config-custom": "workspace:*"
   },
   "peerDependencies": {
