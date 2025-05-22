@@ -1,3 +1,3 @@
 # Client Package
 
-Use for browser-context projects.
+Contains packages for browser-context projects.

@@ -1,3 +1,3 @@
 # Shared Package
 
-Use for pure typescript / javascript(ECMAScript Runtime) powered projects without concern for native / browser or server context.
+Contains basic shared packages for client and server, for pure TypeScript/JavaScript (ECMAScript Runtime) powered projects without concern for native, browser, or server context.

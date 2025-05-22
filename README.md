@@ -9,22 +9,21 @@ use git sub-module to manage this project in the parent project.
 
 ## Env Setup
 
-- `node.js` >= 18.0.0
-- `turbo-repo` as monorepo management tool
-- `pnpm` as package manager
-- `next.js` as server-side rendering framework as peer dependency which version is >= 13.5.0
-- `typescript` as peer dependency which version is >= 5.2.0
+- `node.js` >= 18.19.1
+- `turbo-repo` >= 2.5.3 (monorepo management tool)
+- `pnpm` >= 10.6.5 (package manager)
+- `next.js` >= 14.2.17 (server-side rendering framework, peer dependency)
+- `typescript` >= 5.2.2 (peer dependency)
 
 ## Directory Structure
 
-- `packages/`: packages
-  - `scripts`: scripts for shared packages development
-  - `shared`: client and server basic shared packages
-  - `client`: client packages
-  - `server`: server packages
-  - `ui`: ui packages(react-based components for share)
-  - `tsconfig`: tsconfig for shared packages
-  - `eslint-config-custom`: eslint config for shared packages
+- `client/`: Contains packages for browser-context projects.
+- `eslint-config-custom/`: Contains shared ESLint configurations.
+- `scripts/`: Contains scripts for syncing packages with a remote repository.
+- `server/`: Contains packages for Node.js and Next.js powered projects.
+- `shared/`: Contains basic shared packages for client and server, for pure TypeScript/JavaScript projects.
+- `tsconfig/`: Contains shared tsconfig.json files for different project types.
+- `ui/`: Contains shared UI components, likely based on React and Ant Design.
 
 ## Dev Guide
 
