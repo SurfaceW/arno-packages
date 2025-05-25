@@ -29,7 +29,7 @@ const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
   }
   if (process.env.NODE_ENV === 'development') {
     // @ts-ignore easier for local debugging
-    (window?.__ZUSTAND_STORE_MAP__ as Map<string, any>)?.set(name || 'default', store);
+    (globalThis?.__ZUSTAND_STORE_MAP__ as Map<string, any>)?.set(name || 'default', store);
   }
   return f(loggedSet, get, store)
 }
