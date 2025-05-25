@@ -1,3 +1,5 @@
+"use client";
+
 import { StateCreator, StoreMutatorIdentifier } from 'zustand';
 
 type ZustandLogger = <
