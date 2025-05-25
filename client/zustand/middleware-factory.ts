@@ -9,11 +9,11 @@ export type StateCreatorFnType<T = any> = StateCreator<
   []
 >;
 
-export const composedMiddlewares = (
-  f: StateCreatorFnType<any>,
+export const composedMiddlewares = <T extends object>(
+  f: StateCreatorFnType<T>,
   storeName: string,
 ) => {
-  return devtools(zustandLogger(immer(f), storeName)) as any;
+  return devtools(zustandLogger(immer(f as any), storeName)) as any;
 };
 
 export const composedPersistMiddlewares = (f: StateCreatorFnType, storeName: string) => {
