@@ -20,15 +20,16 @@ export const trimEmptyLines = (str: string, options?: {
 }
 
 export const removeFirstEmojiFromString = (str: string): string => {
-  // The regex will match all forms of emojis including compound ones
-  const emojiRegex = /(\p{Emoji_Presentation}|\p{Emoji}\uFE0F|\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?|(\p{Emoji}|\p{Emoji_Modifier}|\p{Emoji_Component})+)/gu;
+  // Use a more comprehensive regex for ZWJ sequences and compound emojis
+  const emojiRegex = /([\p{Emoji}\u200d\u20e3\ufe0f\u{1f3fb}-\u{1f3ff}]+)/u;
   const trimmedStr = str.trim();
+  // Only replace the first match
   return trimmedStr.replace(emojiRegex, '').trim();
 };
 
 export const getFirstEmojiFromString = (str: string): string | undefined => {
-  // The regex will match all forms of emojis including compound ones
-  const emojiRegex = /(\p{Emoji_Presentation}|\p{Emoji}\uFE0F|\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?|(\p{Emoji}|\p{Emoji_Modifier}|\p{Emoji_Component})+)/gu;
+  // Use a more comprehensive regex for ZWJ sequences and compound emojis
+  const emojiRegex = /([\p{Emoji}\u200d\u20e3\ufe0f\u{1f3fb}-\u{1f3ff}]+)/u;
   const trimmedStr = str.trim();
   const match = trimmedStr.match(emojiRegex);
   return match ? match[0] : undefined;
