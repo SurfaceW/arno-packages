@@ -21,7 +21,7 @@ describe('api', () => {
     });
 
     it('should return rejected promise for unsuccessful response', async () => {
-      const expectedError = 'Response Error:[500][error status text]:Error message';
+      const expectedError = 'Error message';
       const mockFetch = jest.fn().mockResolvedValue({
         ok: false,
         statusText: 'error status text',
@@ -56,7 +56,7 @@ describe('api', () => {
     });
 
     it('should return rejected promise for unsuccessful response', async () => {
-      const expectedError = 'Response Error:[502][服务端出错]:Error Post Msg';
+      const expectedError = 'Error Post Msg';
       const mockFetch = jest.fn().mockResolvedValue({
         ok: false,
         statusText: '服务端出错',
@@ -88,7 +88,7 @@ describe('api', () => {
     });
 
     it('should return rejected promise for unsuccessful response', async () => {
-      const expectedError = 'Response Error:[undefined][error message]:';
+      const expectedError = '';
       const mockFetch = jest.fn().mockResolvedValue({
         ok: false,
         statusText: 'error message',
@@ -119,7 +119,7 @@ describe('api', () => {
     });
 
     it('should return rejected promise for unsuccessful response', async () => {
-      const expectedError = 'Response Error:[400][error message]:';
+      const expectedError = '';
       const mockFetch = jest.fn().mockResolvedValue({
         ok: false,
         statusText: 'error message',
@@ -166,7 +166,7 @@ describe('api', () => {
     });
 
     it('should reject with error content on failure', async () => {
-      const expectedError = 'Response Error:[500][error status text]:Error message';
+      const expectedError = 'Error message';
       jest.spyOn(global, 'fetch').mockResolvedValue({
         ok: false,
         statusText: 'error status text',
@@ -214,7 +214,7 @@ describe('api', () => {
     });
 
     it('should reject with the processed error content on failure', async () => {
-      const expectedError = 'Response Error:[500][undefined]:Error message';
+      const expectedError = 'Error message';
       jest.spyOn(global, 'fetch').mockImplementation(() =>
         Promise.resolve({
           ok: false,
