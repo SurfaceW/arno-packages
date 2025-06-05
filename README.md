@@ -6,20 +6,32 @@
 ## Usage
 
 * use git sub-module to manage this project in the parent project.
-* use npm git install
+
+```bash
+git submodule add https://github.com/SurfaceW/arno-packages.git e-studio-base
+```
+
+* add pnpm workspace to include the packages `pnpm-workspace.yaml`
+
+```yaml
+packages:
+  - "packages/*"
+  # exclude packages that are inside test directories
+  - '!**/test/**'
+```
+
+add dependencies to the parent project `package.json`
 
 ```json
 {
   "dependencies": {
-    "@e-studio/base": "git+https://github.com/SurfaceW/arno-packages.git"
+    "@arno/client": "workspace:*",
+    "@arno/prisma": "workspace:*",
+    "@arno/server": "workspace:*",
+    "@arno/shared": "workspace:*",
+    "@arno/ui": "workspace:*",
   }
 }
-```
-
-and import the related module like this:
-
-```tsx
-import { ClientComponentDemo } from '@e-studio/base/ui/client';
 ```
 
 ## Env Setup
