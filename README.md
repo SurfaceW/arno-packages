@@ -59,3 +59,5 @@ use turbo repo to manage monorepo architecture.
 
 - [x] add `unit` test CI for all packages
 - [x] add publish CI for all packages when commit and merge to `main` branch
+- [ ] remove specific ui-libs out from the base package such as `antd`
+- [ ] upgrade eslint and shared tsconfig to latest version
