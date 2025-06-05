@@ -1,6 +1,7 @@
 {
   "name": "@e-studio/base",
   "version": "1.0.0",
+  "main": "./",
   "private": true,
   "scripts": {},
   "devDependencies": {

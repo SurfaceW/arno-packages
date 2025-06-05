@@ -5,7 +5,22 @@
 
 ## Usage
 
-use git sub-module to manage this project in the parent project.
+* use git sub-module to manage this project in the parent project.
+* use npm git install
+
+```json
+{
+  "dependencies": {
+    "@e-studio/base": "git+https://github.com/SurfaceW/arno-packages.git"
+  }
+}
+```
+
+and import the related module like this:
+
+```tsx
+import { ClientComponentDemo } from '@e-studio/base/ui/client';
+```
 
 ## Env Setup
 
