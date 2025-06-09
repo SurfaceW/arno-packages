@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "./",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
     "cz-conventional-changelog": "latest",
     "cz-emoji": "latest",

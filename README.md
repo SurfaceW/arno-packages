@@ -16,6 +16,7 @@ git submodule add https://github.com/SurfaceW/arno-packages.git e-studio-base
 ```yaml
 packages:
   - "packages/*"
+  - "e-studio-base/*"
   # exclude packages that are inside test directories
   - '!**/test/**'
 ```
