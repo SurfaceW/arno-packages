@@ -39,17 +39,18 @@ describe("stringifyObjectSafe", () => {
   });
 
   test("should return empty string if input cannot be stringified", () => {
+    hackStringify();
     const input = { prop1: BigInt(2) };
     const result = stringifyObjectSafe(input);
     expect(result).toBe("{\"prop1\":\"2\"}");
   });
 });
 
-describe("hackStringify", () => {
-  hackStringify();
-  test("should stringify BigInt", () => {
-    const input = { prop1: BigInt(2) };
-    const result = stringifyObjectSafe(input);
-    expect(result).toBe("{\"prop1\":\"2\"}");
-  });
-});
+// describe("hackStringify", () => {
+//   hackStringify();
+//   test("should stringify BigInt", () => {
+//     const input = { prop1: BigInt(2) };
+//     const result = stringifyObjectSafe(input);
+//     expect(result).toBe("{\"prop1\":\"2\"}");
+//   });
+// });

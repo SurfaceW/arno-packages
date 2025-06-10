@@ -83,4 +83,20 @@ export const enableBigIntStringify = (): void => {
 };
 
 // For backward compatibility
-export const hackStringify = () => { };
+export const hackStringify = () => {
+  const oldStringify = JSON.stringify;
+  JSON.stringify = function (value, replacer, space) {
+    const rpc = replacer;
+    const replaceFn = (key: any, value: any) => {
+      if (typeof replacer === 'function') {
+        return replacer(key, value);
+      } else {
+        if (typeof value === 'bigint') {
+          return value.toString();
+        }
+        return value;
+      }
+    };
+    return oldStringify(value, rpc || (replaceFn as any), space);
+  };
+};
