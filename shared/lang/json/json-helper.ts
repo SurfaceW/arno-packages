@@ -56,18 +56,31 @@ export const enableBigIntStringify = (): void => {
     const bigintReplacer = (key: string, val: unknown): unknown => {
       // First apply the original replacer if it's a function
       let value = val;
-      if (typeof replacer === 'function') {
-        value = replacer(key, val);
+
+      try {
+        if (replacer && typeof replacer === 'function') {
+          value = replacer(key, val);
+        }
+
+        // Then handle BigInt conversion
+        return typeof value === 'bigint' ? value.toString() : value;
+      } catch (e) {
+        console.warn('Error in bigintReplacer:', e);
+        // Return the original value if there's an error
+        return val;
       }
-      
-      // Then handle BigInt conversion
-      return typeof value === 'bigint' ? value.toString() : value;
     };
     
-    // Use the original stringify with our enhanced replacer
-    return originalStringify(value, bigintReplacer, space);
+    try {
+      // Use the original stringify with our enhanced replacer
+      return originalStringify(value, bigintReplacer, space);
+    } catch (e) {
+      console.warn('Error in patched JSON.stringify:', e);
+      // Fallback to original stringify
+      return originalStringify(value);
+    }
   }) as JSONStringifyFunction;
 };
 
 // For backward compatibility
-export const hackStringify = enableBigIntStringify;
+export const hackStringify = () => { };
