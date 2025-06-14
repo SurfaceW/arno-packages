@@ -27,7 +27,6 @@ add dependencies to the parent project `package.json`
 {
   "dependencies": {
     "@arno/client": "workspace:*",
-    "@arno/prisma": "workspace:*",
     "@arno/server": "workspace:*",
     "@arno/shared": "workspace:*",
     "@arno/ui": "workspace:*",
