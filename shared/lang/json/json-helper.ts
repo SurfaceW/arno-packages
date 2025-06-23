@@ -12,7 +12,28 @@ export const parseJSONObjectSafe = <T = unknown>(str: string | unknown): T => {
 export const stringifyObjectSafe = (obj: unknown, replacer?: Parameters<typeof JSON.stringify>[1], space?: string | number): string => {
   if (typeof obj === 'string') return obj;
   try {
-    return JSON.stringify(obj, replacer, space);
+    // Handle BigInt serialization
+    if (Array.isArray(replacer)) {
+      // If replacer is an array, we need a function that handles BigInt
+      const bigintReplacer = (key: string, value: unknown): unknown => {
+        return typeof value === 'bigint' ? value.toString() : value;
+      };
+      return JSON.stringify(obj, bigintReplacer, space);
+    } else {
+      // Handle function replacer or no replacer
+      const bigintAwareReplacer = (key: string, value: unknown): unknown => {
+        // First apply the original replacer if provided
+        let processedValue = value;
+        if (replacer && typeof replacer === 'function') {
+          processedValue = (replacer as (key: string, value: unknown) => unknown)(key, value);
+        }
+
+        // Then handle BigInt conversion
+        return typeof processedValue === 'bigint' ? processedValue.toString() : processedValue;
+      };
+
+      return JSON.stringify(obj, bigintAwareReplacer, space);
+    }
   } catch (e) {
     console.error('stringify error: %o', e);
     return '';

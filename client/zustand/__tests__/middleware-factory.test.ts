@@ -28,9 +28,9 @@ describe('middleware-factory', () => {
         increment: () => void;
       };
       
-      const mockStateCreator: StateCreatorFnType<TestState> = (set, get) => ({
+      const mockStateCreator = (set: any, get: any) => ({
         count: 0,
-        increment: () => set((state) => ({ count: state.count + 1 })),
+        increment: () => set((state: any) => ({ count: state.count + 1 })),
       });
       const storeName = 'testStore';
       
@@ -63,9 +63,9 @@ describe('middleware-factory', () => {
         increment: () => void;
       };
       
-      const mockStateCreator: StateCreatorFnType<TestState> = (set, get) => ({
+      const mockStateCreator = (set: any, get: any) => ({
         count: 0,
-        increment: () => set((state) => ({ count: state.count + 1 })),
+        increment: () => set((state: any) => ({ count: state.count + 1 })),
       });
       const storeName = 'testPersistStore';
       
