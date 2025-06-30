@@ -3,7 +3,6 @@ import React from 'react';
 import { getLogger } from '../log/logger';
 import { ComposeFnCtx } from './compose-api-route';
 import { SupportedLanguage } from '@arno/shared/i18n/language.type';
-import { CookieHelper } from '../cookies/cookies.helper';
 
 export type NextServerPageParams = {
   params: Record<string, string>;
