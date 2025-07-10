@@ -26,7 +26,8 @@
     "clean": "pnpx rimraf ./node_modules",
     "clean:turbo": "pnpx rimraf ./.turbo",
     "test": "jest",
-    "test:watch": "jest ./lib --watch"
+    "test:watch": "jest ./lib --watch",
+    "test:coverage": "jest --coverage"
   },
   "repository": "git@github.com:SurfaceW/arno-packages.git"
 }
