@@ -1,19 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from "next/server";
 import { getLogger } from "../log/logger";
 
 export type ComposeFnCtx = {
-  get<T = any>(sym: Symbol): T;
-  set(sym: Symbol, value: any): void;
+  get<T = unknown>(sym: symbol): T;
+  set(sym: symbol, value: unknown): void;
 };
 
 export const IRequestContext = Symbol.for('context');
 export interface IRequestContext<NextParams = any, Body = any, SearchParams = any> {
   params: Record<keyof NextParams, string>;
-  searchParams: URLSearchParams;
+  searchParams: URLSearchParams | SearchParams | null;
   parsedBody: Body | null;
 }
 
-export type ComposeAPIRouteFunction = (req: NextRequest, res: NextResponse, reqContext: ComposeFnCtx) => Promise<any>;
+export type ComposeAPIRouteFunction = (req: NextRequest, res: NextResponse | null, reqContext: ComposeFnCtx) => Promise<any>;
 
 /**
  * user next server composeAPI route
@@ -23,11 +24,11 @@ export type ComposeAPIRouteFunction = (req: NextRequest, res: NextResponse, reqC
  * @param reqContext Next's params / searchParams 组成
  */
 export function composeAPIRoute(...args: ComposeAPIRouteFunction[]) {
-  const fns = Array.from(arguments);
+  const fns = args;
   return async function wrapAPIHandler(req: NextRequest, reqContext: any) {
     const context = new Map();
     
-    let finalRes = null;
+    let finalRes: NextResponse | null = null;
     let parsedBody = null;
 
     if (req.method !== 'GET') {
@@ -91,7 +92,7 @@ export interface IRequestBody<ReqBody = any> {
 /**
  * @deprecated use composeAPIRoute instead
  */
-export const parseReq = (options?: {}) => {
+export const parseReq = () => {
   return async function parseReq(req: NextRequest, finalRes: NextResponse, context: any) {
     if (req.method === 'GET') {
       return;

@@ -1,5 +1,4 @@
 import * as z from 'zod';
-import { jsonSchemaToZod, JsonSchema } from 'json-schema-to-zod';
 import { AgentManifestParameterType } from '../ai/agents/agent.manifest';
 
 /**
@@ -12,8 +11,6 @@ import { AgentManifestParameterType } from '../ai/agents/agent.manifest';
 //   // we assume that jsonToZodSchema will return a valid ZodType
 //   return eval(jsonSchemaToZod(jsonSchema, { module: 'esm' })) as z.ZodAny;
 // }
-
-
 
 // Implement the function to convert form props to Zod schema
 export function convertDynamicFormPropsToZodSchema(formProps: AgentManifestParameterType[]) {

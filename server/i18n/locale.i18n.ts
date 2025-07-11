@@ -8,8 +8,8 @@ export function getLocale(request: {
   headers: Record<string, string | string[] | undefined>;
 }) {
   let languages = new Negotiator(request).languages();
-  let locales = AVAILABLE_LOCALES;
-  let defaultLocale = DEFAULT_LOCALE;
+  const locales = AVAILABLE_LOCALES;
+  const defaultLocale = DEFAULT_LOCALE;
 
   // console.info('languages', languages, 'headers', request.headers);
 

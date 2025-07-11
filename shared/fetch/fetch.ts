@@ -1,5 +1,6 @@
 /**
  * Fetch with timeout
+ * 
  */
 export function fetchEnhanced<T = Response>(url: string, options: RequestInit, enhancedOptions: {
   timeout: number;

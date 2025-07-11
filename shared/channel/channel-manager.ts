@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { singleton } from '../lang/patterns/singleton';
 
 @singleton

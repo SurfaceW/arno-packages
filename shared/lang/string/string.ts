@@ -20,23 +20,31 @@ export const trimEmptyLines = (str: string, options?: {
 }
 
 export const removeFirstEmojiFromString = (str: string): string => {
-  // Use a more comprehensive regex for ZWJ sequences and compound emojis
-  const emojiRegex = /([\p{Emoji}\u200d\u20e3\ufe0f\u{1f3fb}-\u{1f3ff}]+)/u;
+  // Use a more precise regex that excludes ASCII digits and letters
+  // This regex matches emoji characters but excludes regular text and numbers
+  const emojiRegex = /^(\s*)((?:[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1F018}-\u{1F270}]|[\u{238C}-\u{2454}]|[\u{20D0}-\u{20FF}])(?:\u{200D}(?:[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1F018}-\u{1F270}]|[\u{238C}-\u{2454}]|[\u{20D0}-\u{20FF}]))*(?:[\u{1F3FB}-\u{1F3FF}])?(?:\u{FE0F})?(?:\u{20E3})?)/u;
   const trimmedStr = str.trim();
   // Only replace the first match
-  return trimmedStr.replace(emojiRegex, '').trim();
+  return trimmedStr.replace(emojiRegex, '$1').trim();
 };
 
 export const getFirstEmojiFromString = (str: string): string | undefined => {
-  // Use a more comprehensive regex for ZWJ sequences and compound emojis
-  const emojiRegex = /([\p{Emoji}\u200d\u20e3\ufe0f\u{1f3fb}-\u{1f3ff}]+)/u;
+  // Use a more precise regex that excludes ASCII digits and letters
+  // This regex matches emoji characters but excludes regular text and numbers
+  const emojiRegex = /((?:[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1F018}-\u{1F270}]|[\u{238C}-\u{2454}]|[\u{20D0}-\u{20FF}])(?:\u{200D}(?:[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1F018}-\u{1F270}]|[\u{238C}-\u{2454}]|[\u{20D0}-\u{20FF}]))*(?:[\u{1F3FB}-\u{1F3FF}])?(?:\u{FE0F})?(?:\u{20E3})?)/u;
   const trimmedStr = str.trim();
   const match = trimmedStr.match(emojiRegex);
   return match ? match[0] : undefined;
 };
 
 export const isURL = (str: string): boolean => {
-  // Improved URL regex to handle a wider variety of URL formats, but you can adjust according to your needs
-  const urlRegex = /^(https?:\/\/[^\s$.?#].[^\s]*)$/;
+  // Handle null/undefined inputs
+  if (str == null) {
+    return false;
+  }
+
+  // Improved URL regex that handles query parameters and fragments
+  // Only allows http/https protocols, proper domain structure, and valid characters
+  const urlRegex = /^https?:\/\/[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*(\:[0-9]{1,5})?(\/[a-zA-Z0-9._~:/?#[\]@!$&'()*+,;=%-]*)?(\?[a-zA-Z0-9._~:/?#[\]@!$&'()*+,;=%-]*)?(\#[a-zA-Z0-9._~:/?#[\]@!$&'()*+,;=%-]*)?$/;
   return urlRegex.test(str);
 };

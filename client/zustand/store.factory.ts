@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { create } from 'zustand';
 
 const localMap = new Map<string, ReturnType<ReturnType<typeof create>>>();
