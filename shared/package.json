@@ -28,7 +28,7 @@
     "next": "*",
     "ts-jest": "29.1.0",
     "typescript": "^5.2.2",
-    "zod": "^4"
+    "zod": "^3"
   },
   "scripts": {
     "clean": "pnpx rimraf ./node_modules",
