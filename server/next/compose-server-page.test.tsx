@@ -250,6 +250,36 @@ describe('composeServerPage', () => {
     });
   });
 
+  it('should await Promise params and searchParams from Next.js 15+', async () => {
+    const mockParams = {
+      params: Promise.resolve({ path: ['e-dots', 'TERMS.en'] }),
+      searchParams: Promise.resolve({ q: 'test' }),
+    } as NextServerPageParams;
+
+    const mockPage = jest.fn().mockImplementation(({ params, searchParams }) => (
+      <div>
+        {Array.isArray(params.path) ? params.path.join('/') : params.path}
+        {searchParams.q}
+      </div>
+    ));
+
+    const ComposedPage = composeServerPage(mockPage);
+    const result = await ComposedPage(mockParams);
+
+    expect(mockPage).toHaveBeenCalledWith({
+      params: { path: ['e-dots', 'TERMS.en'] },
+      searchParams: { q: 'test' },
+      context: expect.any(Map),
+    });
+
+    expect(result).toMatchObject({
+      type: 'div',
+      props: expect.objectContaining({
+        children: expect.arrayContaining(['e-dots/TERMS.en', 'test']),
+      }),
+    });
+  });
+
   it('should handle async page component', async () => {
     // Define mock params
     const mockParams = {
